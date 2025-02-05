@@ -18,17 +18,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['world.kbs.co.kr/'],
-        target: '/news',
-    },
+    radar: [
+        {
+            source: ['world.kbs.co.kr/'],
+            target: '/news',
+        },
+    ],
     name: 'News',
     maintainers: ['nczitzk'],
     handler,
     url: 'world.kbs.co.kr/',
     description: `| 한국어 | عربي | 中国语 | English | Français | Deutsch | Bahasa Indonesia | 日本語 | Русский | Español | Tiếng Việt |
-  | ------ | ---- | ------ | ------- | -------- | ------- | ---------------- | ------ | ------- | ------- | ---------- |
-  | k      | a    | c      | e       | f        | g       | i                | j      | r       | s       | v          |`,
+| ------ | ---- | ------ | ------- | -------- | ------- | ---------------- | ------ | ------- | ------- | ---------- |
+| k      | a    | c      | e       | f        | g       | i                | j      | r       | s       | v          |`,
 };
 
 async function handler(ctx) {

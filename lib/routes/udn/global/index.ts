@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['global.udn.com/global_vision/index/:category', 'global.udn.com/'],
-    },
+    radar: [
+        {
+            source: ['global.udn.com/global_vision/index/:category', 'global.udn.com/'],
+        },
+    ],
     name: '轉角國際 - 首頁',
     maintainers: ['nczitzk'],
     handler,
     description: `| 首頁 | 最新文章 | 熱門文章 |
-  | ---- | -------- | -------- |
-  |      | new      | hot      |`,
+| ---- | -------- | -------- |
+|      | new      | hot      |`,
 };
 
 async function handler(ctx) {

@@ -17,17 +17,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['finance.sina.com.cn/stock/usstock', 'finance.sina.com.cn/'],
-        target: '/finance/stock/usstock',
-    },
+    radar: [
+        {
+            source: ['finance.sina.com.cn/stock/usstock', 'finance.sina.com.cn/'],
+            target: '/finance/stock/usstock',
+        },
+    ],
     name: '美股',
     maintainers: ['TonyRL'],
     handler,
     url: 'finance.sina.com.cn/stock/usstock',
     description: `| 最新报道 | 中概股 | 国际财经 | 互联网 |
-  | -------- | ------ | -------- | ------ |
-  | 57045    | 57046  | 56409    | 40811  |`,
+| -------- | ------ | -------- | ------ |
+| 57045    | 57046  | 56409    | 40811  |`,
 };
 
 async function handler(ctx) {

@@ -18,16 +18,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['epaper.xmnn.cn/:id'],
-        target: '/epaper/:id',
-    },
+    radar: [
+        {
+            source: ['epaper.xmnn.cn/:id'],
+            target: '/epaper/:id',
+        },
+    ],
     name: '数字媒体',
     maintainers: ['nczitzk'],
     handler,
     description: `| 厦门日报 | 厦门晚报 | 海西晨报 | 城市捷报 |
-  | -------- | -------- | -------- | -------- |
-  | xmrb     | xmwb     | hxcb     | csjb     |`,
+| -------- | -------- | -------- | -------- |
+| xmrb     | xmwb     | hxcb     | csjb     |`,
 };
 
 async function handler(ctx) {

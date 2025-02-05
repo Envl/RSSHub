@@ -17,17 +17,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['dtcj.com/insighttopic/:id'],
-        target: '/datainsight/:id',
-    },
+    radar: [
+        {
+            source: ['dtcj.com/insighttopic/:id'],
+            target: '/datainsight/:id',
+        },
+    ],
     name: '数据洞察',
     maintainers: ['nczitzk'],
     handler,
     url: 'dtcj.com/dtcj/datainsight',
     description: `| 城数 | NEXT 情报局 | 专业精选 |
-  | ---- | ----------- | -------- |
-  | 3    | 1           | 4        |`,
+| ---- | ----------- | -------- |
+| 3    | 1           | 4        |`,
 };
 
 async function handler(ctx) {

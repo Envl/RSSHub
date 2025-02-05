@@ -17,15 +17,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['hacking8.com/index/:category', 'hacking8.com/'],
-    },
+    radar: [
+        {
+            source: ['hacking8.com/index/:category', 'hacking8.com/'],
+        },
+    ],
     name: '信息流',
     maintainers: ['nczitzk'],
     handler,
     description: `| 推荐  | 最近更新 | 漏洞 / PoC 监控 | PDF |
-  | ----- | -------- | --------------- | --- |
-  | likes | index    | vul-poc         | pdf |`,
+| ----- | -------- | --------------- | --- |
+| likes | index    | vul-poc         | pdf |`,
 };
 
 async function handler(ctx) {

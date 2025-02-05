@@ -23,17 +23,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['news.china.com/:category'],
-    },
+    radar: [
+        {
+            source: ['news.china.com/:category'],
+        },
+    ],
     name: 'News and current affairs 时事新闻',
     maintainers: ['jiaaoMario'],
     handler,
     description: `Category of news
 
-  | China News | International News | Social News | Breaking News |
-  | ---------- | ------------------ | ----------- | ------------- |
-  | domestic   | international      | social      | news100       |`,
+| China News | International News | Social News | Breaking News |
+| ---------- | ------------------ | ----------- | ------------- |
+| domestic   | international      | social      | news100       |`,
 };
 
 async function handler(ctx) {

@@ -22,15 +22,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['sunborngame.com/:category', 'sunborngame.com/'],
-    },
+    radar: [
+        {
+            source: ['sunborngame.com/:category', 'sunborngame.com/'],
+        },
+    ],
     name: '情报局',
     maintainers: ['nczitzk'],
     handler,
     description: `| 新闻 | 公告 |
-  | ---- | ---- |
-  | 1    | 3    |`,
+| ---- | ---- |
+| 1    | 3    |`,
 };
 
 async function handler(ctx) {

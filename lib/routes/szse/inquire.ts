@@ -5,7 +5,7 @@ const __dirname = getCurrentPath(import.meta.url);
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
 import { art } from '@/utils/render';
-import * as path from 'node:path';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/inquire/:category?/:select?/:keyword?',
@@ -20,24 +20,26 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['szse.cn/disclosure/supervision/inquire/index.html', 'szse.cn/'],
-        target: '/inquire',
-    },
+    radar: [
+        {
+            source: ['szse.cn/disclosure/supervision/inquire/index.html', 'szse.cn/'],
+            target: '/inquire',
+        },
+    ],
     name: '问询函件',
     maintainers: ['Jeason0228', 'nczitzk'],
     handler,
     url: 'szse.cn/disclosure/supervision/inquire/index.html',
     description: `类型
 
-  | 主板 | 创业板 |
-  | ---- | ------ |
-  | 0    | 1      |
+| 主板 | 创业板 |
+| ---- | ------ |
+| 0    | 1      |
 
   函件类别
 
-  | 全部函件类别 | 非许可类重组问询函 | 问询函 | 违法违规线索分析报告 | 许可类重组问询函 | 监管函（会计师事务所模板） | 提请关注函（会计师事务所模板） | 年报问询函 | 向中介机构发函 | 半年报问询函 | 关注函 | 公司部函 | 三季报问询函 |
-  | ------------ | ------------------ | ------ | -------------------- | ---------------- | -------------------------- | ------------------------------ | ---------- | -------------- | ------------ | ------ | -------- | ------------ |`,
+| 全部函件类别 | 非许可类重组问询函 | 问询函 | 违法违规线索分析报告 | 许可类重组问询函 | 监管函（会计师事务所模板） | 提请关注函（会计师事务所模板） | 年报问询函 | 向中介机构发函 | 半年报问询函 | 关注函 | 公司部函 | 三季报问询函 |
+| ------------ | ------------------ | ------ | -------------------- | ---------------- | -------------------------- | ------------------------------ | ---------- | -------------- | ------------ | ------ | -------- | ------------ |`,
 };
 
 async function handler(ctx) {

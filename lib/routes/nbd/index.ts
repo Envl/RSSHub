@@ -18,16 +18,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['nbd.com.cn/', 'nbd.com.cn/columns/:id?'],
-    },
+    radar: [
+        {
+            source: ['nbd.com.cn/', 'nbd.com.cn/columns/:id?'],
+        },
+    ],
     name: '分类',
     maintainers: ['nczitzk'],
     handler,
     url: 'nbd.com.cn/',
     description: `| 头条 | 要闻 | 图片新闻 | 推荐 |
-  | ---- | ---- | -------- | ---- |
-  | 2    | 3    | 4        | 5    |`,
+| ---- | ---- | -------- | ---- |
+| 2    | 3    | 4        | 5    |`,
 };
 
 async function handler(ctx) {

@@ -18,17 +18,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['m.mydrivers.com/newsclass.aspx'],
-        target: '/rank',
-    },
+    radar: [
+        {
+            source: ['m.mydrivers.com/newsclass.aspx'],
+            target: '/rank',
+        },
+    ],
     name: '排行',
     maintainers: ['nczitzk'],
     handler,
     url: 'm.mydrivers.com/newsclass.aspx',
     description: `| 24 小时最热 | 本周最热 | 本月最热 |
-  | ----------- | -------- | -------- |
-  | 0           | 1        | 2        |`,
+| ----------- | -------- | -------- |
+| 0           | 1        | 2        |`,
 };
 
 async function handler(ctx) {

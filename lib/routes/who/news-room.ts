@@ -17,25 +17,27 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['who.int/news-room/:type'],
-        target: '/news-room/:type',
-    },
+    radar: [
+        {
+            source: ['who.int/news-room/:type'],
+            target: '/news-room/:type',
+        },
+    ],
     name: 'Newsroom',
     maintainers: ['LogicJake', 'nczitzk'],
     handler,
     url: 'who.int/news',
     description: `Category
 
-  | Feature stories | Commentaries |
-  | --------------- | ------------ |
-  | feature-stories | commentaries |
+| Feature stories | Commentaries |
+| --------------- | ------------ |
+| feature-stories | commentaries |
 
   Language
 
-  | English | العربية | 中文 | Français | Русский | Español | Português |
-  | ------- | ------- | ---- | -------- | ------- | ------- | --------- |
-  | en      | ar      | zh   | fr       | ru      | es      | pt        |`,
+| English | العربية | 中文 | Français | Русский | Español | Português |
+| ------- | ------- | ---- | -------- | ------- | ------- | --------- |
+| en      | ar      | zh   | fr       | ru      | es      | pt        |`,
 };
 
 async function handler(ctx) {

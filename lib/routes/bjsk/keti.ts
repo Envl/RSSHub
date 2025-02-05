@@ -17,17 +17,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['keti.bjsk.org.cn/indexAction!to_index.action', 'keti.bjsk.org.cn/'],
-        target: '/keti/:id',
-    },
+    radar: [
+        {
+            source: ['keti.bjsk.org.cn/indexAction!to_index.action', 'keti.bjsk.org.cn/'],
+            target: '/keti/:id',
+        },
+    ],
     name: '基金项目管理平台',
     maintainers: ['nczitzk'],
     handler,
     url: 'keti.bjsk.org.cn/indexAction!to_index.action',
     description: `| 通知公告                         | 资料下载                         |
-  | -------------------------------- | -------------------------------- |
-  | 402881027cbb8c6f017cbb8e17710002 | 2c908aee818e04f401818e08645c0002 |`,
+| -------------------------------- | -------------------------------- |
+| 402881027cbb8c6f017cbb8e17710002 | 2c908aee818e04f401818e08645c0002 |`,
 };
 
 async function handler(ctx) {

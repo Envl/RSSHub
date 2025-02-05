@@ -14,18 +14,20 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['xky.hunau.edu.cn/', 'xky.hunau.edu.cntzgg_8472', 'xky.hunau.edu.cn/:category'],
-        target: '/:category',
-    },
+    radar: [
+        {
+            source: ['xky.hunau.edu.cn/', 'xky.hunau.edu.cn/tzgg_8472', 'xky.hunau.edu.cn/:category'],
+            target: '/:category',
+        },
+    ],
     name: '国际交流与合作处、国际教育学院、港澳台事务办公室',
     maintainers: ['lcandy2'],
     handler,
     url: 'xky.hunau.edu.cn/',
     description: `| 分类     | 公告通知 | 新闻快讯 | 其他分类... |
-  | -------- | -------- | -------- | ----------- |
-  | type     | xwzx     | xwzx     | 对应 URL    |
-  | category | tzgg     | xwkx     | 对应 URL    |`,
+| -------- | -------- | -------- | ----------- |
+| type     | xwzx     | xwzx     | 对应 URL    |
+| category | tzgg     | xwkx     | 对应 URL    |`,
 };
 
 async function handler(ctx) {

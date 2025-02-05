@@ -19,8 +19,8 @@ export const route: Route = {
     maintainers: ['nczitzk'],
     handler,
     description: `| [周点击榜](https://www.56kog.com/top/weekvisit.html) | [总收藏榜](https://www.56kog.com/top/goodnum.html) | [最新 入库](https://www.56kog.com/top/postdate.html) |
-  | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------- |
-  | weekvisit                                            | goodnum                                            | postdate                                             |`,
+| ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------- |
+| weekvisit                                            | goodnum                                            | postdate                                             |`,
 };
 
 async function handler(ctx) {
@@ -29,5 +29,5 @@ async function handler(ctx) {
 
     const currentUrl = new URL(`top/${category.split(/_/)[0]}_1.html`, rootUrl).href;
 
-    ctx.set('data', await fetchItems(limit, currentUrl, cache.tryGet));
+    return await fetchItems(limit, currentUrl, cache.tryGet);
 }

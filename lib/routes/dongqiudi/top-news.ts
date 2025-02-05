@@ -6,7 +6,7 @@ import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/top_news/:id?',
-    categories: ['new-media'],
+    categories: ['new-media', 'popular'],
     example: '/dongqiudi/top_news/1',
     parameters: { id: '类别 id，不填默认头条新闻' },
     features: {
@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['m.dongqiudi.com/home/:id'],
-        target: '/top_news/:id',
-    },
+    radar: [
+        {
+            source: ['m.dongqiudi.com/home/:id'],
+            target: '/top_news/:id',
+        },
+    ],
     name: '新闻',
     maintainers: ['HendricksZheng'],
     handler,
     description: `| 头条 | 深度 | 闲情 | D 站 | 中超 | 国际 | 英超 | 西甲 | 意甲 | 德甲 |
-  | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-  | 1    | 55   | 37   | 219  | 56   | 120  | 3    | 5    | 4    | 6    |`,
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 1    | 55   | 37   | 219  | 56   | 120  | 3    | 5    | 4    | 6    |`,
 };
 
 async function handler(ctx) {

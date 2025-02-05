@@ -1,6 +1,6 @@
 import { Route } from '@/types';
 import utils from './utils';
-import got from '@/utils/got';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/top/artists',
@@ -8,16 +8,31 @@ export const route: Route = {
     example: '/spotify/top/artists',
     parameters: {},
     features: {
-        requireConfig: true,
+        requireConfig: [
+            {
+                name: 'SPOTIFY_CLIENT_ID',
+                description: '',
+            },
+            {
+                name: 'SPOTIFY_CLIENT_SECRET',
+                description: '',
+            },
+            {
+                name: 'SPOTIFY_REFRESHTOKEN',
+                description: '',
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['open.spotify.com/'],
-    },
+    radar: [
+        {
+            source: ['open.spotify.com/'],
+        },
+    ],
     name: 'Personal Top Artists',
     maintainers: ['outloudvi'],
     handler,
@@ -26,13 +41,12 @@ export const route: Route = {
 
 async function handler() {
     const token = await utils.getPrivateToken();
-    const itemsResponse = await got
-        .get(`https://api.spotify.com/v1/me/top/artists`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        .json();
+    const itemsResponse = await ofetch(`https://api.spotify.com/v1/me/top/artists`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     const items = itemsResponse.items;
 
     return {

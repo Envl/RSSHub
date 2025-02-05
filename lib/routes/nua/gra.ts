@@ -15,17 +15,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['grad.nua.edu.cn/:type/list.htm'],
-    },
+    radar: [
+        {
+            source: ['grad.nua.edu.cn/:type/list.htm'],
+        },
+    ],
     name: 'Graduate Institute',
     maintainers: ['evnydd0sf'],
     handler,
     description: `| News Type | Parameters |
-  | --------- | ---------- |
-  | 招生工作  | 1959       |
-  | 培养工作  | 1962       |
-  | 学位工作  | 1958       |`,
+| --------- | ---------- |
+| 招生工作  | 1959       |
+| 培养工作  | 1962       |
+| 学位工作  | 1958       |`,
 };
 
 async function handler(ctx) {

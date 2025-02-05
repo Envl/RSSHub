@@ -20,16 +20,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['stno1.playno1.com/stno1/:catid/'],
-        target: '/st/:catid',
-    },
+    radar: [
+        {
+            source: ['stno1.playno1.com/stno1/:catid/'],
+            target: '/st/:catid',
+        },
+    ],
     name: '情趣',
     maintainers: ['TonyRL'],
     handler,
     description: `| 全部文章 | 情趣體驗報告 | 情趣新聞 | 情趣研究所 |
-  | -------- | ------------ | -------- | ---------- |
-  | all      | experience   | news     | graduate   |`,
+| -------- | ------------ | -------- | ---------- |
+| all      | experience   | news     | graduate   |`,
 };
 
 async function handler(ctx) {

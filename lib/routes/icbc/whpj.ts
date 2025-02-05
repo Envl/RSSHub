@@ -14,17 +14,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['icbc.com.cn/column/1438058341489590354.html'],
-        target: '/whpj',
-    },
+    radar: [
+        {
+            source: ['icbc.com.cn/column/1438058341489590354.html'],
+            target: '/whpj',
+        },
+    ],
     name: '外汇牌价',
     maintainers: ['leoleoasd'],
     handler,
     url: 'icbc.com.cn/column/1438058341489590354.html',
     description: `| 短格式 | 参考价 | 现汇买卖 | 现钞买卖 | 现汇买入 | 现汇卖出 | 现钞买入 | 现钞卖出 |
-  | ------ | ------ | -------- | -------- | -------- | -------- | -------- | -------- |
-  | short  | zs     | xh       | xc       | xhmr     | xhmc     | xcmr     | xcmc     |`,
+| ------ | ------ | -------- | -------- | -------- | -------- | -------- | -------- |
+| short  | zs     | xh       | xc       | xhmr     | xhmc     | xcmr     | xcmc     |`,
 };
 
 async function handler(ctx) {

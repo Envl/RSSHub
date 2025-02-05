@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['uae.hrbeu.edu.cn/:id.htm'],
-    },
+    radar: [
+        {
+            source: ['uae.hrbeu.edu.cn/:id.htm'],
+        },
+    ],
     name: '水声工程学院',
     maintainers: [],
     handler,
     description: `| 新闻动态 | 通知公告 | 科学研究 / 科研动态 |
-  | :------: | :------: | :-----------------: |
-  |   xwdt   |   tzgg   |      kxyj-kydt      |`,
+| :------: | :------: | :-----------------: |
+|   xwdt   |   tzgg   |      kxyj-kydt      |`,
 };
 
 async function handler(ctx) {

@@ -13,7 +13,16 @@ export const route: Route = {
     example: '/weibo/timeline/3306934123',
     parameters: { uid: '用户的uid', feature: '过滤类型ID，0：全部、1：原创、2：图片、3：视频、4：音乐，默认为0。', routeParams: '额外参数；请参阅上面的说明和表格' },
     features: {
-        requireConfig: true,
+        requireConfig: [
+            {
+                name: 'WEIBO_APP_KEY',
+                description: '',
+            },
+            {
+                name: 'WEIBO_REDIRECT_URL',
+                description: '',
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
@@ -23,11 +32,11 @@ export const route: Route = {
     name: '个人时间线',
     maintainers: ['zytomorrow', 'DIYgod', 'Rongronggg9'],
     handler,
-    description: `:::warning
+    description: `::: warning
   需要对应用户打开页面进行授权生成 token 才能生成内容
 
   自部署需要申请并配置微博 key，具体见部署文档
-  :::`,
+:::`,
 };
 
 async function handler(ctx) {
@@ -86,7 +95,8 @@ async function handler(ctx) {
             ctx.set({
                 'Cache-Control': 'no-cache',
             });
-            ctx.redirect(`https://api.weibo.com/oauth2/authorize?client_id=${app_key}&redirect_uri=${redirect_url}${routeParams ? `&state=${routeParams}` : ''}`);
+            ctx.set('redirect', `https://api.weibo.com/oauth2/authorize?client_id=${app_key}&redirect_uri=${redirect_url}${routeParams ? `&state=${routeParams}` : ''}`);
+            return;
         }
         const resultItem = await Promise.all(
             response.statuses.map(async (item) => {
@@ -142,16 +152,13 @@ async function handler(ctx) {
             })
         );
 
-        ctx.set(
-            'data',
-            weiboUtils.sinaimgTvax({
-                title: `个人微博时间线--${name}`,
-                link: `http://weibo.com/${uid}/`,
-                description,
-                image: profileImageUrl,
-                item: resultItem,
-            })
-        );
+        return weiboUtils.sinaimgTvax({
+            title: `个人微博时间线--${name}`,
+            link: `http://weibo.com/${uid}/`,
+            description,
+            image: profileImageUrl,
+            item: resultItem,
+        });
     } else if (uid === '0' || ctx.req.query()) {
         const { app_key = '', redirect_url = ctx.req.origin + '/weibo/timeline/0', app_secret = '' } = config.weibo;
 
@@ -177,6 +184,6 @@ async function handler(ctx) {
         ctx.set({
             'Cache-Control': 'no-cache',
         });
-        ctx.redirect(`https://api.weibo.com/oauth2/authorize?client_id=${app_key}&redirect_uri=${redirect_url}${routeParams ? `&state=${feature}/${routeParams.replaceAll('&', '%26')}` : ''}`);
+        ctx.set('redirect', `https://api.weibo.com/oauth2/authorize?client_id=${app_key}&redirect_uri=${redirect_url}${routeParams ? `&state=${feature}/${routeParams.replaceAll('&', '%26')}` : ''}`);
     }
 }

@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['gs.sass.org.cn/:type/list.htm'],
-    },
+    radar: [
+        {
+            source: ['gs.sass.org.cn/:type/list.htm'],
+        },
+    ],
     name: '研究生院',
     maintainers: ['yanbot-team'],
     handler,
     description: `| 硕士统考招生 | 硕士推免招生 |
-  | ------------ | ------------ |
-  | 1793         | sstmzs       |`,
+| ------------ | ------------ |
+| 1793         | sstmzs       |`,
 };
 
 async function handler(ctx) {

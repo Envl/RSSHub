@@ -17,15 +17,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['jwc.bjfu.edu.cn/:type/index.html'],
-    },
+    radar: [
+        {
+            source: ['jwc.bjfu.edu.cn/:type/index.html'],
+        },
+    ],
     name: '教务处通知公告',
     maintainers: ['markmingjie'],
     handler,
     description: `| 教务快讯 | 考试信息 | 课程信息 | 教改动态 | 图片新闻 |
-  | -------- | -------- | -------- | -------- | -------- |
-  | jwkx     | ksxx     | kcxx     | jgdt     | tpxw     |`,
+| -------- | -------- | -------- | -------- | -------- |
+| jwkx     | ksxx     | kcxx     | jgdt     | tpxw     |`,
 };
 
 async function handler(ctx) {

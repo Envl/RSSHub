@@ -14,17 +14,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['instructables.com/projects'],
-        target: '/projects',
-    },
+    radar: [
+        {
+            source: ['instructables.com/projects'],
+            target: '/projects',
+        },
+    ],
     name: 'Projects',
     maintainers: ['wolfg1969'],
     handler,
     url: 'instructables.com/projects',
     description: `| All | Circuits | Workshop | Craft | Cooking | Living | Outside | Teachers |
-  | --- | -------- | -------- | ----- | ------- | ------ | ------- | -------- |
-  |     | circuits | workshop | craft | cooking | living | outside | teachers |`,
+| --- | -------- | -------- | ----- | ------- | ------ | ------- | -------- |
+|     | circuits | workshop | craft | cooking | living | outside | teachers |`,
 };
 
 async function handler(ctx) {

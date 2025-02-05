@@ -18,17 +18,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['swpu.edu.cn/'],
-        target: '',
-    },
+    radar: [
+        {
+            source: ['swpu.edu.cn/'],
+            target: '',
+        },
+    ],
     name: '财经学院',
     maintainers: ['RiverTwilight'],
     handler,
     url: 'swpu.edu.cn/',
     description: `| 栏目 | 学院新闻 | 学院通知 |
-  | ---- | -------- | -------- |
-  | 代码 | xyxw     | xytz     |`,
+| ---- | -------- | -------- |
+| 代码 | xyxw     | xytz     |`,
 };
 
 async function handler(ctx) {

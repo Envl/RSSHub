@@ -18,16 +18,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['yan.sicau.edu.cn/'],
-    },
+    radar: [
+        {
+            source: ['yan.sicau.edu.cn/'],
+        },
+    ],
     name: '研究生院',
     maintainers: ['nczitzk'],
     handler,
     url: 'yan.sicau.edu.cn/',
     description: `| 新闻公告 | 学术报告 |
-  | -------- | -------- |
-  | xwgg     | xsbg     |`,
+| -------- | -------- |
+| xwgg     | xsbg     |`,
 };
 
 async function handler(ctx) {

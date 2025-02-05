@@ -6,7 +6,7 @@ import utils from './utils';
 
 export const route: Route = {
     path: '/user/:uid/:type?/:option?',
-    categories: ['new-media'],
+    categories: ['new-media', 'popular'],
     example: '/pingwest/user/7781550877/article',
     parameters: { uid: '用户id, 可从用户主页中得到', type: '内容类型, 默认为`article`', option: '参数' },
     features: {
@@ -17,18 +17,20 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['pingwest.com/user/:uid/:type', 'pingwest.com/'],
-        target: '/user/:uid/:type',
-    },
+    radar: [
+        {
+            source: ['pingwest.com/user/:uid/:type', 'pingwest.com/'],
+            target: '/user/:uid/:type',
+        },
+    ],
     name: '用户',
     maintainers: ['sanmmm'],
     handler,
     description: `内容类型
 
-  | 文章    | 动态  |
-  | ------- | ----- |
-  | article | state |
+| 文章    | 动态  |
+| ------- | ----- |
+| article | state |
 
   参数
 

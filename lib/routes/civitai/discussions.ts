@@ -10,20 +10,27 @@ export const route: Route = {
     example: '/civitai/discussions/4384',
     parameters: { modelId: 'N' },
     features: {
-        requireConfig: true,
+        requireConfig: [
+            {
+                name: 'CIVITAI_COOKIE',
+                description: '',
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['civitai.com/models/:modelId'],
-    },
+    radar: [
+        {
+            source: ['civitai.com/models/:modelId'],
+        },
+    ],
     name: 'Model discussions',
     maintainers: ['DIYgod'],
     handler,
-    description: `:::warning
+    description: `::: warning
 Need to configure \`CIVITAI_COOKIE\` to obtain image information of NSFW models.
 :::`,
 };

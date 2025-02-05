@@ -14,17 +14,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['xky.hunau.edu.cn/', 'xky.hunau.edu.cntzgg_8472', 'xky.hunau.edu.cn/:category'],
-        target: '/:category',
-    },
+    radar: [
+        {
+            source: ['xky.hunau.edu.cn/', 'xky.hunau.edu.cn/tzgg_8472', 'xky.hunau.edu.cn/:category'],
+            target: '/:category',
+        },
+    ],
     name: '公共管理与法学学院',
     maintainers: [],
     handler,
     url: 'xky.hunau.edu.cn/',
     description: `| 分类 | 通知公告 | 学院新闻 | 其他分类通知... |
-  | ---- | -------- | -------- | --------------- |
-  | 参数 | tzgg     | xyxw     | 对应 URL        |`,
+| ---- | -------- | -------- | --------------- |
+| 参数 | tzgg     | xyxw     | 对应 URL        |`,
 };
 
 async function handler(ctx) {

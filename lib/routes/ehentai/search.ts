@@ -5,8 +5,8 @@ import EhAPI from './ehapi';
 export const route: Route = {
     path: '/search/:params?/:page?/:routeParams?',
     categories: ['picture'],
-    example: '/ehentai/search/f_search=artist%3Amana%24/1',
-    parameters: { params: 'Search parameters. You can copy the content after `https://e-hentai.org/?`', page: 'Page number', routeParams: 'Additional parameters, see the table above' },
+    example: '/ehentai/search/f_cats=1021/0/bittorrent=true&embed_thumb=false',
+    parameters: { params: 'Search parameters. You can copy the content after `https://e-hentai.org/?`', page: 'Page number, set 0 to get latest', routeParams: 'Additional parameters, see the table above' },
     features: {
         requireConfig: false,
         requirePuppeteer: false,
@@ -40,18 +40,15 @@ async function handler(ctx) {
         title = match[1];
     }
 
-    ctx.set(
-        'data',
-        EhAPI.from_ex
-            ? {
-                  title: title + ' - ExHentai Search ',
-                  link: `https://exhentai.org/?${params}`,
-                  item: items,
-              }
-            : {
-                  title: title + ' - E-Hentai Search ',
-                  link: `https://e-hentai.org/?${params}`,
-                  item: items,
-              }
-    );
+    return EhAPI.from_ex
+        ? {
+              title: title + ' - ExHentai Search ',
+              link: `https://exhentai.org/?${params}`,
+              item: items,
+          }
+        : {
+              title: title + ' - E-Hentai Search ',
+              link: `https://e-hentai.org/?${params}`,
+              item: items,
+          };
 }

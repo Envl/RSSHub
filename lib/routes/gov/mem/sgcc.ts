@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['www.mem.gov.cn/gk/sgcc/:category'],
-        target: '/mem/gk/sgcc/:category',
-    },
+    radar: [
+        {
+            source: ['www.mem.gov.cn/gk/sgcc/:category'],
+            target: '/mem/gk/sgcc/:category',
+        },
+    ],
     name: '事故及灾害查处',
     maintainers: ['nczitzk'],
     handler,
     description: `| 挂牌督办 | 调查报告   |
-  | -------- | ---------- |
-  | sggpdbqk | tbzdsgdcbg |`,
+| -------- | ---------- |
+| sggpdbqk | tbzdsgdcbg |`,
 };
 
 async function handler(ctx) {

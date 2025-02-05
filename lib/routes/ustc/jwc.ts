@@ -20,17 +20,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['www.teach.ustc.edu.cn/'],
-        target: '/jwc',
-    },
+    radar: [
+        {
+            source: ['www.teach.ustc.edu.cn/'],
+            target: '/jwc',
+        },
+    ],
     name: '教务处通知新闻',
     maintainers: ['hang333'],
     handler,
     url: 'www.teach.ustc.edu.cn/',
     description: `| 信息 | 教学     | 考试 | 交流     |
-  | ---- | -------- | ---- | -------- |
-  | info | teaching | exam | exchange |`,
+| ---- | -------- | ---- | -------- |
+| info | teaching | exam | exchange |`,
 };
 
 async function handler(ctx) {

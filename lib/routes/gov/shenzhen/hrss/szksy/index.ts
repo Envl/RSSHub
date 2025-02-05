@@ -19,16 +19,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['xxgk.sz.gov.cn/cn/xxgk/zfxxgj/:caty'],
-    },
+    radar: [
+        {
+            source: ['xxgk.sz.gov.cn/cn/xxgk/zfxxgj/:caty'],
+        },
+    ],
     name: '深圳市考试院',
     maintainers: ['zlasd'],
     handler,
     url: 'hrss.sz.gov.cn/*',
     description: `| 通知公告 | 报名信息 | 成绩信息 | 合格标准 | 合格人员公示 | 证书发放信息 |
-  | :------: | :------: | :------: | :------: | :----------: | :----------: |
-  |   tzgg   |   bmxx   |   cjxx   |   hgbz   |    hgrygs    |     zsff     |`,
+| :------: | :------: | :------: | :------: | :----------: | :----------: |
+|   tzgg   |   bmxx   |   cjxx   |   hgbz   |    hgrygs    |     zsff     |`,
 };
 
 async function handler(ctx) {

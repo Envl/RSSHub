@@ -6,7 +6,7 @@ import { load } from 'cheerio';
 
 export const route: Route = {
     path: '/:hub?',
-    categories: ['new-media'],
+    categories: ['new-media', 'popular'],
     example: '/theverge',
     parameters: { hub: 'Hub, see below, All Posts by default' },
     features: {
@@ -17,26 +17,28 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['theverge.com/:hub', 'theverge.com/'],
-    },
+    radar: [
+        {
+            source: ['theverge.com/:hub', 'theverge.com/'],
+        },
+    ],
     name: 'The Verge',
     maintainers: ['HenryQW', 'vbali'],
     handler,
     description: `| Hub         | Hub name            |
-  | ----------- | ------------------- |
-  |             | All Posts           |
-  | android     | Android             |
-  | apple       | Apple               |
-  | apps        | Apps & Software     |
-  | blackberry  | BlackBerry          |
-  | culture     | Culture             |
-  | gaming      | Gaming              |
-  | hd          | HD & Home           |
-  | microsoft   | Microsoft           |
-  | photography | Photography & Video |
-  | policy      | Policy & Law        |
-  | web         | Web & Social        |
+| ----------- | ------------------- |
+|             | All Posts           |
+| android     | Android             |
+| apple       | Apple               |
+| apps        | Apps & Software     |
+| blackberry  | BlackBerry          |
+| culture     | Culture             |
+| gaming      | Gaming              |
+| hd          | HD & Home           |
+| microsoft   | Microsoft           |
+| photography | Photography & Video |
+| policy      | Policy & Law        |
+| web         | Web & Social        |
 
   Provides a better reading experience (full text articles) over the official one.`,
 };

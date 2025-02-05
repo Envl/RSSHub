@@ -16,23 +16,25 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['www.cea.gov.cn/cea/xwzx/zqsd/index.html', 'www.cea.gov.cn/'],
-        target: '',
-    },
+    radar: [
+        {
+            source: ['www.cea.gov.cn/cea/xwzx/zqsd/index.html', 'www.cea.gov.cn/'],
+            target: '',
+        },
+    ],
     name: '中国地震台',
     maintainers: ['SettingDust'],
     handler,
     url: 'www.cea.gov.cn/cea/xwzx/zqsd/index.html',
     description: `| 参数 | 类型                        |
-  | ---- | --------------------------- |
-  | 1    | 最近 24 小时地震信息        |
-  | 2    | 最近 48 小时地震信息        |
-  | 5    | 最近一年 3.0 级以上地震信息 |
-  | 7    | 最近一年 3.0 级以下地震     |
-  | 8    | 最近一年 4.0 级以上地震信息 |
-  | 9    | 最近一年 5.0 级以上地震信息 |
-  | 0    | 最近一年 6.0 级以上地震信息 |
+| ---- | --------------------------- |
+| 1    | 最近 24 小时地震信息        |
+| 2    | 最近 48 小时地震信息        |
+| 5    | 最近一年 3.0 级以上地震信息 |
+| 7    | 最近一年 3.0 级以下地震     |
+| 8    | 最近一年 4.0 级以上地震信息 |
+| 9    | 最近一年 5.0 级以上地震信息 |
+| 0    | 最近一年 6.0 级以上地震信息 |
 
   可通过全局过滤参数订阅您感兴趣的地区.`,
 };

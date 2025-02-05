@@ -23,17 +23,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['woshipm.com/'],
-        target: '/popular',
-    },
+    radar: [
+        {
+            source: ['woshipm.com/'],
+            target: '/popular',
+        },
+    ],
     name: '热门文章',
     maintainers: ['WenryXu'],
     handler,
     url: 'woshipm.com/',
     description: `| 日榜  | 周榜   | 月榜    |
-  | ----- | ------ | ------- |
-  | daily | weekly | monthly |`,
+| ----- | ------ | ------- |
+| daily | weekly | monthly |`,
 };
 
 async function handler(ctx) {

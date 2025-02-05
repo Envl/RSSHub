@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['dky.sicau.edu.cn/'],
-    },
+    radar: [
+        {
+            source: ['dky.sicau.edu.cn/'],
+        },
+    ],
     name: '招生就业',
     maintainers: ['nczitzk'],
     handler,
     url: 'dky.sicau.edu.cn/',
     description: `| 本科生招生 | 研究生招生 | 毕业生选录指南 |
-  | ---------- | ---------- | -------------- |
-  | bkszs      | yjszs      | bysxlzn        |`,
+| ---------- | ---------- | -------------- |
+| bkszs      | yjszs      | bysxlzn        |`,
 };
 
 async function handler(ctx) {

@@ -6,7 +6,7 @@ import got from '@/utils/got';
 import timezone from '@/utils/timezone';
 import { parseDate } from '@/utils/parse-date';
 import { art } from '@/utils/render';
-import * as path from 'node:path';
+import path from 'node:path';
 
 export const route: Route = {
     path: ['/zh/:type?', '/ff14_zh/:type?'],
@@ -21,17 +21,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['ff.web.sdo.com/web8/index.html'],
-        target: '/zh',
-    },
+    radar: [
+        {
+            source: ['ff.web.sdo.com/web8/index.html'],
+            target: '/zh',
+        },
+    ],
     name: '最终幻想 14 国服',
     maintainers: ['Kiotlin', 'ZeroClad', '15x15G'],
     handler,
     url: 'ff.web.sdo.com/web8/index.html',
     description: `| 新闻 | 公告     | 活动   | 广告      | 所有 |
-  | ---- | -------- | ------ | --------- | ---- |
-  | news | announce | events | advertise | all  |`,
+| ---- | -------- | ------ | --------- | ---- |
+| news | announce | events | advertise | all  |`,
 };
 
 async function handler(ctx) {

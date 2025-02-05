@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['tass.com/:category'],
-        target: '/:category',
-    },
+    radar: [
+        {
+            source: ['tass.com/:category'],
+            target: '/:category',
+        },
+    ],
     name: 'News',
     maintainers: ['TonyRL'],
     handler,
     description: `| Russian Politics & Diplomacy | World | Business & Economy | Military & Defense | Science & Space | Emergencies | Society & Culture | Press Review | Sports |
-  | ---------------------------- | ----- | ------------------ | ------------------ | --------------- | ----------- | ----------------- | ------------ | ------ |
-  | politics                     | world | economy            | defense            | science         | emergencies | society           | pressreview  | sports |`,
+| ---------------------------- | ----- | ------------------ | ------------------ | --------------- | ----------- | ----------------- | ------------ | ------ |
+| politics                     | world | economy            | defense            | science         | emergencies | society           | pressreview  | sports |`,
 };
 
 async function handler(ctx) {

@@ -19,16 +19,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['scs.nuist.edu.cn/:category/list.htm'],
-        target: '/scs/:category',
-    },
+    radar: [
+        {
+            source: ['scs.nuist.edu.cn/:category/list.htm'],
+            target: '/scs/:category',
+        },
+    ],
     name: 'NUIST CS（南信大计软院）',
     maintainers: ['gylidian'],
     handler,
     description: `| 新闻快讯 | 通知公告 | 教务信息 | 科研动态 | 学子风采 |
-  | -------- | -------- | -------- | -------- | -------- |
-  | xwkx     | tzgg     | jwxx     | kydt     | xzfc     |`,
+| -------- | -------- | -------- | -------- | -------- |
+| xwkx     | tzgg     | jwxx     | kydt     | xzfc     |`,
 };
 
 async function handler(ctx) {

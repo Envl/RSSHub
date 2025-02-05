@@ -14,35 +14,37 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['jmcomic.group/'],
-    },
+    radar: [
+        {
+            source: ['jmcomic.group/'],
+        },
+    ],
     name: '成人 A 漫',
     maintainers: ['nczitzk'],
     handler,
     url: 'jmcomic.group/',
     description: `分类
 
-  | 全部 | 其他漫畫 | 同人   | 韓漫   | 美漫   | 短篇  | 单本   |
-  | ---- | -------- | ------ | ------ | ------ | ----- | ------ |
-  | all  | another  | doujin | hanman | meiman | short | single |
+| 全部 | 其他漫畫 | 同人   | 韓漫   | 美漫   | 短篇  | 单本   |
+| ---- | -------- | ------ | ------ | ------ | ----- | ------ |
+| all  | another  | doujin | hanman | meiman | short | single |
 
   时间范围
 
-  | 全部 | 今天 | 这周 | 本月 |
-  | ---- | ---- | ---- | ---- |
-  | a    | t    | w    | m    |
+| 全部 | 今天 | 这周 | 本月 |
+| ---- | ---- | ---- | ---- |
+| a    | t    | w    | m    |
 
   排列顺序
 
-  | 最新 | 最多点阅的 | 最多图片 | 最高评分 | 最多评论 | 最多爱心 |
-  | ---- | ---------- | -------- | -------- | -------- | -------- |
-  | mr   | mv         | mp       | tr       | md       | tf       |
+| 最新 | 最多点阅的 | 最多图片 | 最高评分 | 最多评论 | 最多爱心 |
+| ---- | ---------- | -------- | -------- | -------- | -------- |
+| mr   | mv         | mp       | tr       | md       | tf       |
 
   关键字（供参考）
 
-  | YAOI | 女性向 | NTR | 非 H | 3D | 獵奇 |
-  | ---- | ------ | --- | ---- | -- | ---- |`,
+| YAOI | 女性向 | NTR | 非 H | 3D | 獵奇 |
+| ---- | ------ | --- | ---- | -- | ---- |`,
 };
 
 async function handler(ctx) {
@@ -55,5 +57,5 @@ async function handler(ctx) {
 
     const currentUrl = `${rootUrl}/albums${category === 'all' ? '' : `/${category}`}${keyword ? `?screen=${keyword}` : '?'}${time === 'a' ? '' : `&t=${time}`}${order === 'mr' ? '' : `&o=${order}`}`;
 
-    ctx.set('data', await ProcessItems(ctx, currentUrl, rootUrl));
+    return await ProcessItems(ctx, currentUrl, rootUrl);
 }

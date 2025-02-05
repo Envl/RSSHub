@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['www.cas.cn/cg/:caty?'],
-    },
+    radar: [
+        {
+            source: ['www.cas.cn/cg/:caty?'],
+        },
+    ],
     name: '成果转化',
     maintainers: ['nczitzk'],
     handler,
     description: `| 工作动态 | 科技成果转移转化亮点工作 |
-  | -------- | ------------------------ |
-  | zh       | cgzhld                   |`,
+| -------- | ------------------------ |
+| zh       | cgzhld                   |`,
 };
 
 async function handler(ctx) {

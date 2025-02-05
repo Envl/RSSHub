@@ -17,15 +17,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['cfachina.org/servicesupport/analygarden/:program?', 'cfachina.org/'],
-    },
+    radar: [
+        {
+            source: ['cfachina.org/servicesupport/analygarden/:program?', 'cfachina.org/'],
+        },
+    ],
     name: '分析师园地',
     maintainers: ['TonyRL'],
     handler,
     description: `| 有色金属类 | 黑色金属类 | 能源化工类 | 贵金属类 | 农产品类 | 金融类 | 指数类 |
-  | ---------- | ---------- | ---------- | -------- | -------- | ------ | ------ |
-  | ysjsl      | hsjsl      | nyhgl      | gjsl     | ncpl     | jrl    | zsl    |`,
+| ---------- | ---------- | ---------- | -------- | -------- | ------ | ------ |
+| ysjsl      | hsjsl      | nyhgl      | gjsl     | ncpl     | jrl    | zsl    |`,
 };
 
 async function handler(ctx) {

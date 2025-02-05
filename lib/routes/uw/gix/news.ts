@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['gixnetwork.org/news/:category'],
-    },
+    radar: [
+        {
+            source: ['gixnetwork.org/news/:category'],
+        },
+    ],
     name: 'Global Innovation Exchange News',
     maintainers: ['dykderrick'],
     handler,
     description: `| Blog | In The News |
-  | ---- | ----------- |
-  | blog | inthenews   |`,
+| ---- | ----------- |
+| blog | inthenews   |`,
 };
 
 async function handler(ctx) {

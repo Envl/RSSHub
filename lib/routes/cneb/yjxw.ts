@@ -23,15 +23,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['cneb.gov.cn/yjxw/:category?', 'cneb.gov.cn/'],
-    },
+    radar: [
+        {
+            source: ['cneb.gov.cn/yjxw/:category?', 'cneb.gov.cn/'],
+        },
+    ],
     name: '应急新闻',
     maintainers: ['nczitzk'],
     handler,
     description: `| 全部 | 国内新闻 | 国际新闻 |
-  | ---- | -------- | -------- |
-  |      | gnxw     | gjxw     |`,
+| ---- | -------- | -------- |
+|      | gnxw     | gjxw     |`,
 };
 
 async function handler(ctx) {

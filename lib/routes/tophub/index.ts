@@ -5,20 +5,28 @@ import { config } from '@/config';
 
 export const route: Route = {
     path: '/:id',
-    categories: ['new-media'],
+    categories: ['new-media', 'popular'],
     example: '/tophub/Om4ejxvxEN',
     parameters: { id: '榜单id，可在 URL 中找到' },
     features: {
-        requireConfig: true,
+        requireConfig: [
+            {
+                name: 'TOPHUB_COOKIE',
+                optional: true,
+                description: '',
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['tophub.today/n/:id'],
-    },
+    radar: [
+        {
+            source: ['tophub.today/n/:id'],
+        },
+    ],
     name: '榜单',
     maintainers: ['LogicJake'],
     handler,

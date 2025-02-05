@@ -17,17 +17,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['it.ouc.edu.cn/'],
-        target: '/it',
-    },
+    radar: [
+        {
+            source: ['it.ouc.edu.cn/'],
+            target: '/it',
+        },
+    ],
     name: '信息科学与工程学院',
     maintainers: ['GeoffreyChen777', '3401797899'],
     handler,
     url: 'it.ouc.edu.cn/',
     description: `| 学院要闻 | 学院公告 | 学院活动 |
-  | -------- | -------- | -------- |
-  | 0        | 1        | 2        |`,
+| -------- | -------- | -------- |
+| 0        | 1        | 2        |`,
 };
 
 async function handler(ctx) {

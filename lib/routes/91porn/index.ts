@@ -7,7 +7,7 @@ import got from '@/utils/got';
 import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import { art } from '@/utils/render';
-import * as path from 'node:path';
+import path from 'node:path';
 import { domainValidation } from './utils';
 
 export const route: Route = {
@@ -23,17 +23,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['91porn.com/index.php'],
-        target: '',
-    },
+    radar: [
+        {
+            source: ['91porn.com/index.php'],
+            target: '',
+        },
+    ],
     name: 'Hot Video Today',
     maintainers: ['TonyRL'],
     handler,
     url: '91porn.com/index.php',
     description: `| English | 简体中文 | 繁體中文 |
-  | ------- | -------- | -------- |
-  | en\_US  | cn\_CN   | zh\_ZH   |`,
+| ------- | -------- | -------- |
+| en\_US  | cn\_CN   | zh\_ZH   |`,
 };
 
 async function handler(ctx) {

@@ -1,24 +1,36 @@
-import { Route } from '@/types';
+import { Route, ViewType } from '@/types';
 import utils from './utils';
-import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/playlist/:id',
-    categories: ['multimedia'],
+    categories: ['multimedia', 'popular'],
+    view: ViewType.Audios,
     example: '/spotify/playlist/4UBVy1LttvodwivPUuwJk2',
     parameters: { id: 'Playlist ID' },
     features: {
-        requireConfig: true,
+        requireConfig: [
+            {
+                name: 'SPOTIFY_CLIENT_ID',
+                description: '',
+            },
+            {
+                name: 'SPOTIFY_CLIENT_SECRET',
+                description: '',
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['open.spotify.com/playlist/:id'],
-    },
+    radar: [
+        {
+            source: ['open.spotify.com/playlist/:id'],
+        },
+    ],
     name: 'Playlist',
     maintainers: ['outloudvi'],
     handler,
@@ -27,13 +39,12 @@ export const route: Route = {
 async function handler(ctx) {
     const token = await utils.getPublicToken();
     const id = ctx.req.param('id');
-    const meta = await got
-        .get(`https://api.spotify.com/v1/playlists/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        })
-        .json();
+    const meta = await ofetch(`https://api.spotify.com/v1/playlists/${id}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     const tracks = meta.tracks.items;
 
     return {

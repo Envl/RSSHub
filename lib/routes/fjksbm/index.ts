@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['fjksbm.com/portal/:category?', 'fjksbm.com/portal'],
-    },
+    radar: [
+        {
+            source: ['fjksbm.com/portal/:category?', 'fjksbm.com/portal'],
+        },
+    ],
     name: '分类',
     maintainers: ['nczitzk'],
     handler,
     description: `| 已发布公告 (方案)，即将开始 | 网络报名进行中 | 网络报名结束等待打印准考证 | 正在打印准考证 | 考试结束，等待发布成绩 | 已发布成绩 | 新闻动态 | 政策法规 |
-  | --------------------------- | -------------- | -------------------------- | -------------- | ---------------------- | ---------- | -------- | -------- |
-  | 0                           | 1              | 2                          | 3              | 4                      | 5          | news     | policy   |`,
+| --------------------------- | -------------- | -------------------------- | -------------- | ---------------------- | ---------- | -------- | -------- |
+| 0                           | 1              | 2                          | 3              | 4                      | 5          | news     | policy   |`,
 };
 
 async function handler(ctx) {

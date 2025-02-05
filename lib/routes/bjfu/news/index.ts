@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['news.bjfu.edu.cn/:type/index.html'],
-    },
+    radar: [
+        {
+            source: ['news.bjfu.edu.cn/:type/index.html'],
+        },
+    ],
     name: '绿色新闻网',
     maintainers: ['markmingjie'],
     handler,
     description: `| 绿色要闻 | 校园动态 | 教学科研 | 党建思政 | 一周排行 |
-  | -------- | -------- | -------- | -------- | -------- |
-  | lsyw     | xydt     | jxky     | djsz     | yzph     |`,
+| -------- | -------- | -------- | -------- | -------- |
+| lsyw     | xydt     | jxky     | djsz     | yzph     |`,
 };
 
 async function handler(ctx) {

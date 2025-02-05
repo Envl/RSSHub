@@ -18,17 +18,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['qianzhan.com/analyst', 'qianzhan.com/'],
-        target: '/analyst/rank',
-    },
+    radar: [
+        {
+            source: ['qianzhan.com/analyst', 'qianzhan.com/'],
+            target: '/analyst/rank',
+        },
+    ],
     name: '排行榜',
     maintainers: ['moke8'],
     handler,
     url: 'qianzhan.com/analyst',
     description: `| 周排行 | 月排行 |
-  | ------ | ------ |
-  | week   | month  |`,
+| ------ | ------ |
+| week   | month  |`,
 };
 
 async function handler(ctx) {

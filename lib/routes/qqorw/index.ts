@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['qqorw.cn/:category', 'qqorw.cn/'],
-    },
+    radar: [
+        {
+            source: ['qqorw.cn/:category', 'qqorw.cn/'],
+        },
+    ],
     name: '每日早报',
     maintainers: ['nczitzk'],
     handler,
     description: `| 首页 | 每日早报 | 国际早报 | 生活冷知识 |
-  | ---- | -------- | -------- | ---------- |
-  |      | mrzb     | zbapp    | zbzzd      |`,
+| ---- | -------- | -------- | ---------- |
+|      | mrzb     | zbapp    | zbzzd      |`,
 };
 
 async function handler(ctx) {

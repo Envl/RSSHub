@@ -18,15 +18,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['yjsy.hrbeu.edu.cn/:id/list.htm'],
-    },
+    radar: [
+        {
+            source: ['yjsy.hrbeu.edu.cn/:id/list.htm'],
+        },
+    ],
     name: '研究生院',
     maintainers: ['Derekmini'],
     handler,
     description: `| 通知公告 | 新闻动态 | 学籍注册 | 奖助学金 | 其他 |
-  | :------: | :------: | :------: | :------: | :--: |
-  |   2981   |   2980   |   3009   |   3011   |  ... |`,
+| :------: | :------: | :------: | :------: | :--: |
+|   2981   |   2980   |   3009   |   3011   |  ... |`,
 };
 
 async function handler(ctx) {

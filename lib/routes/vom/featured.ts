@@ -18,16 +18,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['vom.mn/:lang', 'vom.mn/'],
-        target: '/featured/:lang',
-    },
+    radar: [
+        {
+            source: ['vom.mn/:lang', 'vom.mn/'],
+            target: '/featured/:lang',
+        },
+    ],
     name: 'News',
     maintainers: ['TonyRL'],
     handler,
     description: `| English | 日本語 | Монгол | Русский | 简体中文 |
-  | ------- | ------ | ------ | ------- | -------- |
-  | en      | ja     | mn     | ru      | zh       |`,
+| ------- | ------ | ------ | ------- | -------- |
+| en      | ja     | mn     | ru      | zh       |`,
 };
 
 async function handler(ctx) {

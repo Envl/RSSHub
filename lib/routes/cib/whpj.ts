@@ -20,17 +20,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['cib.com.cn/'],
-        target: '/whpj',
-    },
+    radar: [
+        {
+            source: ['cib.com.cn/'],
+            target: '/whpj',
+        },
+    ],
     name: '外汇牌价',
     maintainers: ['Qixingchen'],
     handler,
     url: 'cib.com.cn/',
     description: `| 短格式 | 现汇买卖 | 现钞买卖 | 现汇买入 | 现汇卖出 | 现钞买入 | 现钞卖出 |
-  | ------ | -------- | -------- | -------- | -------- | -------- | -------- |
-  | short  | xh       | xc       | xhmr     | xhmc     | xcmr     | xcmc     |`,
+| ------ | -------- | -------- | -------- | -------- | -------- | -------- |
+| short  | xh       | xc       | xhmr     | xhmc     | xcmr     | xcmc     |`,
 };
 
 async function handler(ctx) {

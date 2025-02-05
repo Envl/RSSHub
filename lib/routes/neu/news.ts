@@ -18,29 +18,31 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['neunews.neu.edu.cn/:type/list.htm'],
-    },
+    radar: [
+        {
+            source: ['neunews.neu.edu.cn/:type/list.htm'],
+        },
+    ],
     name: '新闻网',
     maintainers: ['JeasonLau'],
     handler,
     description: `| 种类名   | 参数 |
-  | -------- | ---- |
-  | 东大要闻 | ddyw |
-  | 媒体东大 | mtdd |
-  | 通知公告 | tzgg |
-  | 新闻纵横 | xwzh |
-  | 人才培养 | rcpy |
-  | 学术科研 | xsky |
-  | 英文新闻 | 217  |
-  | 招生就业 | zsjy |
-  | 考研出国 | kycg |
-  | 校园文学 | xywx |
-  | 校友风采 | xyfc |
-  | 时事热点 | ssrd |
-  | 教育前沿 | jyqy |
-  | 文化体育 | whty |
-  | 最新科技 | zxkj |`,
+| -------- | ---- |
+| 东大要闻 | ddyw |
+| 媒体东大 | mtdd |
+| 通知公告 | tzgg |
+| 新闻纵横 | xwzh |
+| 人才培养 | rcpy |
+| 学术科研 | xsky |
+| 英文新闻 | 217  |
+| 招生就业 | zsjy |
+| 考研出国 | kycg |
+| 校园文学 | xywx |
+| 校友风采 | xyfc |
+| 时事热点 | ssrd |
+| 教育前沿 | jyqy |
+| 文化体育 | whty |
+| 最新科技 | zxkj |`,
 };
 
 async function handler(ctx) {

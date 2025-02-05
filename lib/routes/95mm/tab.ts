@@ -14,15 +14,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['95mm.org/'],
-    },
+    radar: [
+        {
+            source: ['95mm.org/'],
+        },
+    ],
     name: '分类',
     maintainers: ['nczitzk'],
     handler,
     url: '95mm.org/',
     description: `| 最新 | 热门 | 校花 | 森系 | 清纯 | 童颜 | 嫩模 | 少女 |
-  | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |`,
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |`,
 };
 
 async function handler(ctx) {
@@ -30,5 +32,5 @@ async function handler(ctx) {
 
     const currentUrl = `${rootUrl}/home-ajax/index.html?tabcid=${tab}&page=1`;
 
-    ctx.set('data', await ProcessItems(ctx, tab, currentUrl));
+    return await ProcessItems(ctx, tab, currentUrl);
 }

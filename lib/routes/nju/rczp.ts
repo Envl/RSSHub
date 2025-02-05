@@ -17,15 +17,17 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['rczp.nju.edu.cn/sylm/:type/index.html'],
-    },
+    radar: [
+        {
+            source: ['rczp.nju.edu.cn/sylm/:type/index.html'],
+        },
+    ],
     name: '人才招聘网',
     maintainers: ['ret-1'],
     handler,
     description: `| 信息发布 | 教研类岗位 | 管理岗位及其他 |
-  | -------- | ---------- | -------------- |
-  | xxfb     | jylgw      | gllgw          |`,
+| -------- | ---------- | -------------- |
+| xxfb     | jylgw      | gllgw          |`,
 };
 
 async function handler(ctx) {

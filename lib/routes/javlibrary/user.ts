@@ -8,8 +8,8 @@ export const route: Route = {
     maintainers: [],
     handler,
     description: `| Wanted     | Watched     | Owned     |
-  | ---------- | ----------- | --------- |
-  | userwanted | userwatched | userowned |`,
+| ---------- | ----------- | --------- |
+| userwanted | userwatched | userowned |`,
 };
 
 async function handler(ctx) {
@@ -18,5 +18,5 @@ async function handler(ctx) {
     const language = ctx.req.param('language') ?? defaultLanguage;
     const currentUrl = `${rootUrl}/${language}/${type}.php?list&u=${id}`;
 
-    ctx.set('data', await ProcessItems(language, currentUrl, cache.tryGet));
+    return await ProcessItems(language, currentUrl, cache.tryGet);
 }

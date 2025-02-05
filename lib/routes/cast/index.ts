@@ -1,14 +1,10 @@
 import { Route } from '@/types';
 import cache from '@/utils/cache';
-import got, { type Response } from '@/utils/got';
+import got from '@/utils/got';
 import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 const baseUrl = 'https://www.cast.org.cn';
-
-interface ResponseData<T> extends Response {
-    data: T;
-}
 
 async function parsePage(html: string) {
     return await Promise.all(
@@ -27,7 +23,7 @@ async function parsePage(html: string) {
                 articleUrl = `${baseUrl}${title.attr('href')}`;
 
                 return cache.tryGet(articleUrl, async () => {
-                    const res = (await got.get(articleUrl!)) as ResponseData<string>;
+                    const res = await got.get<string>(articleUrl!);
                     const article = load(res.data);
                     const pubDate = timezone(parseDate(article('meta[name=PubDate]').attr('content')!, 'YYYY-MM-DD HH:mm'), +8);
 
@@ -55,22 +51,28 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
+    radar: [
+        {
+            source: ['cast.org.cn/:column/:subColumn/:category/index.html', 'cast.org.cn/:column/:subColumn/index.html'],
+            target: '/:column/:subColumn/:category?',
+        },
+    ],
     name: '通用',
     maintainers: ['KarasuShin', 'TonyRL'],
     handler,
-    description: `:::tip
+    description: `::: tip
   在路由末尾处加上 \`?limit=限制获取数目\` 来限制获取条目数量，默认值为\`10\`
-  :::
+:::
 
-  | 分类     | 编码 |
-  | -------- | ---- |
-  | 全景科协 | qjkx |
-  | 智库     | zk   |
-  | 学术     | xs   |
-  | 科普     | kp   |
-  | 党建     | dj   |
-  | 数据     | sj   |
-  | 新闻     | xw   |`,
+| 分类     | 编码 |
+| -------- | ---- |
+| 全景科协 | qjkx |
+| 智库     | zk   |
+| 学术     | xs   |
+| 科普     | kp   |
+| 党建     | dj   |
+| 数据     | sj   |
+| 新闻     | xw   |`,
 };
 
 async function handler(ctx) {
@@ -80,7 +82,7 @@ async function handler(ctx) {
     if (category) {
         link += `/${category}/index.html`;
     }
-    const { data: indexData } = (await got.get(link)) as ResponseData<string>;
+    const { data: indexData } = await got.get<string>(link);
 
     const $ = load(indexData);
 
@@ -95,9 +97,9 @@ async function handler(ctx) {
         const queryData = JSON.parse(buildUnitScript.attr('querydata')?.replace(/'/g, '"') ?? '{}');
         queryData.paramJson = `{"pageNo":1,"pageSize":${limit}}`;
 
-        const { data } = (await got.get(queryUrl, {
+        const { data } = await got.get<{ data: { html: string } }>(queryUrl, {
             searchParams: new URLSearchParams(queryData),
-        })) as ResponseData<{ data: { html: string } }>;
+        });
 
         items = await parsePage(data.data.html);
     }

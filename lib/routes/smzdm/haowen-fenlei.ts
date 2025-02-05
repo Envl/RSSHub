@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['post.smzdm.com/fenlei/:name'],
-        target: '/haowen/fenlei/:name',
-    },
+    radar: [
+        {
+            source: ['post.smzdm.com/fenlei/:name'],
+            target: '/haowen/fenlei/:name',
+        },
+    ],
     name: '好文分类',
     maintainers: ['LogicJake'],
     handler,
     description: `| 最新 | 周排行 | 月排行 |
-  | ---- | ------ | ------ |
-  | 0    | 7      | 30     |`,
+| ---- | ------ | ------ |
+| 0    | 7      | 30     |`,
 };
 
 async function handler(ctx) {

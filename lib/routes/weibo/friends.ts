@@ -5,6 +5,7 @@ import got from '@/utils/got';
 import { config } from '@/config';
 import weiboUtils from './utils';
 import { fallback, queryToBoolean } from '@/utils/readable-social';
+import ConfigNotFoundError from '@/errors/types/config-not-found';
 
 export const route: Route = {
     path: '/friends/:routeParams?',
@@ -12,33 +13,41 @@ export const route: Route = {
     example: '/weibo/friends',
     parameters: { routeParams: '额外参数；请参阅上面的说明和表格' },
     features: {
-        requireConfig: true,
+        requireConfig: [
+            {
+                name: 'WEIBO_COOKIES',
+                optional: true,
+                description: '',
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['weibo.com/'],
-        target: '/friends',
-    },
+    radar: [
+        {
+            source: ['weibo.com/'],
+            target: '/friends',
+        },
+    ],
     name: '最新关注时间线',
     maintainers: ['CaoMeiYouRen'],
     handler,
     url: 'weibo.com/',
-    description: `:::warning
+    description: `::: warning
   此方案必须使用用户\`Cookie\`进行抓取
 
   因微博 cookies 的过期与更新方案未经验证，部署一次 Cookie 的有效时长未知
 
   微博用户 Cookie 的配置可参照部署文档
-  :::`,
+:::`,
 };
 
 async function handler(ctx) {
     if (!config.weibo.cookies) {
-        throw new Error('Weibo Friends Timeline is not available due to the absense of [Weibo Cookies]. Check <a href="https://docs.rsshub.app/install/#pei-zhi-bu-fen-rss-mo-kuai-pei-zhi">relevant config tutorial</a>');
+        throw new ConfigNotFoundError('Weibo Friends Timeline is not available due to the absense of [Weibo Cookies]. Check <a href="https://docs.rsshub.app/deploy/config#route-specific-configurations">relevant config tutorial</a>');
     }
 
     let displayVideo = '1';
@@ -146,12 +155,9 @@ async function handler(ctx) {
         })
     );
 
-    ctx.set(
-        'data',
-        weiboUtils.sinaimgTvax({
-            title,
-            link: `https://weibo.com`,
-            item: resultItems,
-        })
-    );
+    return weiboUtils.sinaimgTvax({
+        title,
+        link: `https://weibo.com`,
+        item: resultItems,
+    });
 }

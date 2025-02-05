@@ -5,7 +5,7 @@ const __dirname = getCurrentPath(import.meta.url);
 import { parseDate } from '@/utils/parse-date';
 import { baseUrl, getForumMeta, getThreads, getThread } from './utils';
 import { art } from '@/utils/render';
-import * as path from 'node:path';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/forum/:id/:type?',
@@ -20,16 +20,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['feng.com/forum/photo/:id', 'feng.com/forum/:id'],
-        target: '/forum/:id',
-    },
+    radar: [
+        {
+            source: ['feng.com/forum/photo/:id', 'feng.com/forum/:id'],
+            target: '/forum/:id',
+        },
+    ],
     name: '社区',
     maintainers: ['TonyRL'],
     handler,
     description: `| 最新回复 | 最新发布 | 热门 | 精华    |
-  | -------- | -------- | ---- | ------- |
-  | newest   | all      | hot  | essence |`,
+| -------- | -------- | ---- | ------- |
+| newest   | all      | hot  | essence |`,
 };
 
 async function handler(ctx) {

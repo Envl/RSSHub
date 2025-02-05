@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['ngocn2.org/'],
-    },
+    radar: [
+        {
+            source: ['ngocn2.org/'],
+        },
+    ],
     name: '首页',
     maintainers: ['nczitzk'],
     handler,
     url: 'ngocn2.org/',
     description: `| 所有文章 | 早报        | 热点     |
-  | -------- | ----------- | -------- |
-  | article  | daily-brief | trending |`,
+| -------- | ----------- | -------- |
+| article  | daily-brief | trending |`,
 };
 
 async function handler(ctx) {

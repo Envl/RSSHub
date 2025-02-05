@@ -10,7 +10,7 @@ export const route: Route = {
     example: '/ft/myft/rss-key',
     parameters: { key: 'the last part of myFT personal RSS address' },
     features: {
-        requireConfig: true,
+        requireConfig: false,
         requirePuppeteer: false,
         antiCrawler: false,
         supportBT: false,
@@ -20,10 +20,10 @@ export const route: Route = {
     name: 'myFT personal RSS',
     maintainers: ['HenryQW'],
     handler,
-    description: `:::tip
+    description: `::: tip
   -   Visit ft.com -> myFT -> Contact Preferences to enable personal RSS feed, see [help.ft.com](https://help.ft.com/faq/email-alerts-and-contact-preferences/what-is-myft-rss-feed/)
   -   Obtain the key from the personal RSS address, it looks like \`12345678-abcd-4036-82db-vdv20db024b8\`
-  :::`,
+:::`,
 };
 
 async function handler(ctx) {

@@ -40,17 +40,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['ustc.edu.cn/'],
-        target: '/news',
-    },
+    radar: [
+        {
+            source: ['ustc.edu.cn/'],
+            target: '/news',
+        },
+    ],
     name: '官网通知公告',
     maintainers: ['hang333', 'jasongzy'],
     handler,
     url: 'ustc.edu.cn/',
     description: `| 教学类 | 科研类 | 管理类 | 服务类 |
-  | ------ | ------ | ------ | ------ |
-  | jx     | ky     | gl     | fw     |`,
+| ------ | ------ | ------ | ------ |
+| jx     | ky     | gl     | fw     |`,
 };
 
 async function handler(ctx) {

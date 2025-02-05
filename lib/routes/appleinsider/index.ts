@@ -6,7 +6,7 @@ import { parseDate } from '@/utils/parse-date';
 
 export const route: Route = {
     path: '/:category?',
-    categories: ['new-media'],
+    categories: ['new-media', 'popular'],
     example: '/appleinsider',
     parameters: { category: 'Category, see below, News by default' },
     features: {
@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['appleinsider.com/:category', 'appleinsider.com/'],
-        target: '/:category',
-    },
+    radar: [
+        {
+            source: ['appleinsider.com/:category', 'appleinsider.com/'],
+            target: '/:category',
+        },
+    ],
     name: 'Category',
     maintainers: ['nczitzk'],
     handler,
     description: `| News | Reviews | How-tos |
-  | ---- | ------- | ------- |
-  |      | reviews | how-to  |`,
+| ---- | ------- | ------- |
+|      | reviews | how-to  |`,
 };
 
 async function handler(ctx) {

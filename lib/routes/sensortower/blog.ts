@@ -7,7 +7,7 @@ import got from '@/utils/got';
 import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import { art } from '@/utils/render';
-import * as path from 'node:path';
+import path from 'node:path';
 
 export const route: Route = {
     path: '/blog/:language?',
@@ -22,17 +22,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['sensortower.com/blog', 'sensortower.com/zh-CN/blog', 'sensortower.com/ja/blog', 'sensortower.com/ko/blog', 'sensortower.com/'],
-        target: '/blog',
-    },
+    radar: [
+        {
+            source: ['sensortower.com/blog', 'sensortower.com/zh-CN/blog', 'sensortower.com/ja/blog', 'sensortower.com/ko/blog', 'sensortower.com/'],
+            target: '/blog',
+        },
+    ],
     name: 'Blog',
     maintainers: ['nczitzk'],
     handler,
     url: 'sensortower.com/blog',
     description: `| English | Chinese | Japanese | Korean |
-  | ------- | ------- | -------- | ------ |
-  |         | zh-CN   | ja       | ko     |`,
+| ------- | ------- | -------- | ------ |
+|         | zh-CN   | ja       | ko     |`,
 };
 
 async function handler(ctx) {

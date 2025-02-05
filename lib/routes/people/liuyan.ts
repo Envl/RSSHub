@@ -17,16 +17,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['liuyan.people.com.cn/'],
-    },
+    radar: [
+        {
+            source: ['liuyan.people.com.cn/'],
+        },
+    ],
     name: '领导留言板',
     maintainers: ['nczitzk'],
     handler,
     url: 'liuyan.people.com.cn/',
     description: `| 全部 | 待回复 | 办理中 | 已办理 |
-  | ---- | ------ | ------ | ------ |
-  | 1    | 2      | 3      | 4      |`,
+| ---- | ------ | ------ | ------ |
+| 1    | 2      | 3      | 4      |`,
 };
 
 async function handler(ctx) {

@@ -17,14 +17,16 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['global.udn.com/search/tagging/1020/:tag', 'global.udn.com/'],
-    },
+    radar: [
+        {
+            source: ['global.udn.com/search/tagging/1020/:tag', 'global.udn.com/'],
+        },
+    ],
     name: '轉角國際 - 標籤',
     maintainers: ['emdoe', 'nczitzk'],
     handler,
     description: `| 過去 24 小時 | 鏡頭背後 | 深度專欄 | 重磅廣播 |
-  | ------------ | -------- | -------- | -------- |`,
+| ------------ | -------- | -------- | -------- |`,
 };
 
 async function handler(ctx) {

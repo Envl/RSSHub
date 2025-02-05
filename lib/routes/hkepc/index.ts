@@ -8,7 +8,7 @@ import { baseUrl, categoryMap } from './data';
 
 export const route: Route = {
     path: '/:category?',
-    categories: ['new-media'],
+    categories: ['new-media', 'popular'],
     example: '/hkepc/news',
     parameters: { category: '分类，见下表，默认为最新消息' },
     features: {
@@ -19,17 +19,19 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['hkepc.com/'],
-        target: '',
-    },
+    radar: [
+        {
+            source: ['hkepc.com/'],
+            target: '',
+        },
+    ],
     name: 'HKEPC 电脑领域',
     maintainers: ['TonyRL'],
     handler,
     url: 'hkepc.com/',
     description: `| 专题报导   | 新闻中心 | 新品快递 | 超频领域 | 流动数码 | 生活娱乐      | 会员消息 | 脑场新闻 | 业界资讯 | 最新消息 |
-  | ---------- | -------- | -------- | -------- | -------- | ------------- | -------- | -------- | -------- | -------- |
-  | coverStory | news     | review   | ocLab    | digital  | entertainment | member   | price    | press    | latest   |`,
+| ---------- | -------- | -------- | -------- | -------- | ------------- | -------- | -------- | -------- | -------- |
+| coverStory | news     | review   | ocLab    | digital  | entertainment | member   | price    | press    | latest   |`,
 };
 
 async function handler(ctx) {

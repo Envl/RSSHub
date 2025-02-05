@@ -31,16 +31,18 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['nltimes.nl/categories/:category'],
-        target: '/news/:category',
-    },
+    radar: [
+        {
+            source: ['nltimes.nl/categories/:category'],
+            target: '/news/:category',
+        },
+    ],
     name: 'News',
     maintainers: ['Hivol'],
     handler,
     description: `| Top Stories (default) | Health | Crime | Politics | Business | Tech | Culture | Sports | Weird | 1-1-2 |
-  | --------------------- | ------ | ----- | -------- | -------- | ---- | ------- | ------ | ----- | ----- |
-  | top-stories           | health | crime | politics | business | tech | culture | sports | weird | 1-1-2 |`,
+| --------------------- | ------ | ----- | -------- | -------- | ---- | ------- | ------ | ----- | ----- |
+| top-stories           | health | crime | politics | business | tech | culture | sports | weird | 1-1-2 |`,
 };
 
 async function handler(ctx) {

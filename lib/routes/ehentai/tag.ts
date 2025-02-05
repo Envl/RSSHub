@@ -5,8 +5,8 @@ import EhAPI from './ehapi';
 export const route: Route = {
     path: '/tag/:tag/:page?/:routeParams?',
     categories: ['picture'],
-    example: '/ehentai/tag/language:chinese/1',
-    parameters: { tag: 'Tag', page: 'Page number', routeParams: 'Additional parameters, see the table above' },
+    example: '/ehentai/tag/language:chinese/0/bittorrent=true&embed_thumb=false',
+    parameters: { tag: 'Tag', page: 'Page number, set 0 to get latest', routeParams: 'Additional parameters, see the table above' },
     features: {
         requireConfig: false,
         requirePuppeteer: false,
@@ -28,18 +28,15 @@ async function handler(ctx) {
     const embed_thumb = routeParams.get('embed_thumb') || false;
     const items = await EhAPI.getTagItems(cache, tag, page, bittorrent, embed_thumb);
 
-    ctx.set(
-        'data',
-        EhAPI.from_ex
-            ? {
-                  title: tag + ' - ExHentai Tag',
-                  link: `https://exhentai.org/tag/${tag}`,
-                  item: items,
-              }
-            : {
-                  title: tag + ' - E-Hentai Tag',
-                  link: `https://e-hentai.org/tag/${tag}`,
-                  item: items,
-              }
-    );
+    return EhAPI.from_ex
+        ? {
+              title: tag + ' - ExHentai Tag',
+              link: `https://exhentai.org/tag/${tag}`,
+              item: items,
+          }
+        : {
+              title: tag + ' - E-Hentai Tag',
+              link: `https://e-hentai.org/tag/${tag}`,
+              item: items,
+          };
 }

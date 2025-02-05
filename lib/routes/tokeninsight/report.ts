@@ -20,18 +20,20 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['tokeninsight.com/:lang/report'],
-        target: '/report/:lang',
-    },
+    radar: [
+        {
+            source: ['tokeninsight.com/:lang/report'],
+            target: '/report/:lang',
+        },
+    ],
     name: 'Research',
     maintainers: [],
     handler,
     description: `Language:
 
-  | Chinese | English |
-  | ------- | ------- |
-  | zh      | en      |`,
+| Chinese | English |
+| ------- | ------- |
+| zh      | en      |`,
 };
 
 async function handler(ctx) {

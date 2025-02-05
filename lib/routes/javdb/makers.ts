@@ -7,24 +7,32 @@ export const route: Route = {
     example: '/javdb/makers/7R',
     parameters: { id: '编号，可在片商页 URL 中找到', filter: '过滤，见下表，默认为 `全部`' },
     features: {
-        requireConfig: false,
+        requireConfig: [
+            {
+                name: 'JAVDB_SESSION',
+                description: 'JavDB登陆后的session值，可在控制台的cookie下查找 `_jdb_session` 的值，即可获取',
+                optional: true,
+            },
+        ],
         requirePuppeteer: false,
         antiCrawler: true,
         supportBT: false,
         supportPodcast: false,
         supportScihub: false,
     },
-    radar: {
-        source: ['javdb.com/'],
-        target: '',
-    },
+    radar: [
+        {
+            source: ['javdb.com/'],
+            target: '',
+        },
+    ],
     name: '片商',
     maintainers: ['nczitzk'],
     handler,
     url: 'javdb.com/',
     description: `| 全部 | 可播放   | 單體作品 | 可下載   | 字幕  | 預覽圖  |
-  | ---- | -------- | -------- | -------- | ----- | ------- |
-  |      | playable | single   | download | cnsub | preview |
+| ---- | -------- | -------- | -------- | ----- | ------- |
+|      | playable | single   | download | cnsub | preview |
 
   所有片商编号参见 [片商庫](https://javdb.com/makers)`,
 };
@@ -46,5 +54,5 @@ async function handler(ctx) {
 
     const title = `JavDB${filters[filter] === '' ? '' : ` - ${filters[filter]}`} `;
 
-    ctx.set('data', await utils.ProcessItems(ctx, currentUrl, title));
+    return await utils.ProcessItems(ctx, currentUrl, title);
 }
